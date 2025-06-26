@@ -309,6 +309,8 @@ legend(x =6.5, y = -10.5, col = c("black","blue", "red","darkorchid3"),lty = 2, 
 
 # Comparison with MSE #####
 
+# DONT RUN, LOAD .rda FILES INSTEAD !!
+
 # N <- c(100,300,750)
 # Noise <- c(.5,1.5,3)
 # 
@@ -396,7 +398,7 @@ legend(x =6.5, y = -10.5, col = c("black","blue", "red","darkorchid3"),lty = 2, 
 # }
 # plotlist <- list(plot.nw,plot.moj,plot.nwadd, plot.kim)
 
-load("PlotList.rda"); load("MSEtable.rda")
+load("rda files/PlotList.rda"); load("rda files/MSEtable.rda")
 plot.moj <- plotlist[[2]]; plot.nw <- plotlist[[1]]; plot.nwadd <- plotlist[[3]]; plot.kim <- plotlist[[4]]
 
 minmatX <- sapply(plotlist, function(x){
@@ -523,8 +525,10 @@ alpha_perc <- 0.05
 
 ## CI for NW
 
+# DONT RUN FUNCTIONS, LOAD .rda INSTEAD !
+
 # boot_nw <- boot(data = data_obs, statistic = bootstrap_nw, R = 1000); save(boot_nw, file = "BootCInw.rda")
-load("BootCInw.rda")
+load("rda files/BootCInw.rda")
 
 ave_nw <- apply(boot_nw$t, 2, function(x) quantile(x, probs =.5, na.rm = T))
 lower_nw <- apply(boot_nw$t, 2, function(x) quantile(x, probs = alpha_perc / 2, na.rm = T))
@@ -533,7 +537,7 @@ upper_nw <- apply(boot_nw$t, 2, function(x) quantile(x, probs = 1 - alpha_perc /
 ## CI for moj
 
 # boot_moj <- boot(data = data, statistic = bootstrap_moj, R = 1000); save(boot_moj, file = "BootCImoj.rda")
-load("BootCImoj.rda")
+load("rda files/BootCImoj.rda")
 
 ave_moj <- apply(boot_moj$t, 2, function(x) quantile(x, probs = .5, na.rm = T))
 lower_moj <- apply(boot_moj$t, 2, function(x) quantile(x, probs = alpha_perc / 2, na.rm = T))
@@ -542,7 +546,7 @@ upper_moj <- apply(boot_moj$t, 2, function(x) quantile(x, probs = 1 - alpha_perc
 ## CI for NW+
 
 # boot_nwadd <- boot(data = data, statistic = bootstrap_nwadd, R = 500); save(boot_nwadd, file = "BootCInwad.rda")
-load("bootCInwad.rda")
+load("rda files/bootCInwad.rda")
 
 ave_nwadd <- apply(boot_nwadd$t, 2, function(x) quantile(x, probs = .5, na.rm = T))
 lower_nwadd <- apply(boot_nwadd$t, 2, function(x) quantile(x, probs = alpha_perc / 2, na.rm = T))
@@ -551,7 +555,7 @@ upper_nwadd <- apply(boot_nwadd$t, 2, function(x) quantile(x, probs = 1 - alpha_
 ## CI for Kim+
 
 # boot_kim <- boot(data = data, statistic = bootstrap_kim, R = 1000); save(boot_kim, file = "BootCIkim.rda")
-load("bootCIkim.rda")
+load("rda files/bootCIkim.rda")
 
 ave_kim <- apply(boot_kim$t, 2, function(x) quantile(x, probs = .5, na.rm = T))
 lower_kim <- apply(boot_kim$t, 2, function(x) quantile(x, probs = alpha_perc / 2, na.rm = T))
